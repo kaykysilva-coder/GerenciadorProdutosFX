@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProdutoController">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <!-- Título do Mercado em Vermelho -->
+    <Label text="Mercadinho do Pedro!" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #d32f2f;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Nome:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Descrição:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="txtDescricao" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Data Fabricação (DD/MM/AAAA):" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="txtDataFab" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Data Validade (DD/MM/AAAA):" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextField fx:id="txtDataVal" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Label text="Preço Compra:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <TextField fx:id="txtPrecoCompra" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+        <Label text="Preço Venda:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <TextField fx:id="txtPrecoVenda" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+        <Label text="Estoque:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+        <TextField fx:id="txtEstoque" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+        <Label text="Categoria:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+        <ComboBox fx:id="cbCategoria" GridPane.columnIndex="1" GridPane.rowIndex="8" prefWidth="200"/>
+    </GridPane>
+
+    <!-- Botões Principais de Ação (Preto e Branco) -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Cadastrar Produto" onAction="#cadastrarProduto" style="-fx-background-color: #000000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        <Button text="Excluir Selecionado" onAction="#excluirProduto" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-border-color: #000000; -fx-font-weight: bold; -fx-cursor: hand;"/>
+    </HBox>
+
+    <!-- Botões de Relatório e Filtros (Tons de Cinza / Preto e Branco) -->
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 5 0 5 0;">
+        <Button text="Estoque Baixo (&lt; 10)" onAction="#relatorioEstoqueBaixo" style="-fx-background-color: #000000; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        <Button text="Próximos Vencimento" onAction="#relatorioVencimento" style="-fx-background-color: #333333; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        <Button text="Lucro Médio" onAction="#relatorioLucroMedio" style="-fx-background-color: #555555; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        <Button text="Por Setor" onAction="#relatorioAgrupadoSetor" style="-fx-background-color: #777777; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-cursor: hand;"/>
+        <Button text="Mostrar Todos" onAction="#mostrarTodos" style="-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-border-color: #000000; -fx-font-weight: bold; -fx-cursor: hand;"/>
+    </HBox>
+
+    <TableView fx:id="tabelaProdutos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colCodigo" text="Código" prefWidth="80"/>
+            <TableColumn fx:id="colNome" text="Nome" prefWidth="120"/>
+            <TableColumn fx:id="colFabricacao" text="Fabricação" prefWidth="90"/>
+            <TableColumn fx:id="colValidade" text="Validade" prefWidth="90"/>
+            <TableColumn fx:id="colPrecoVenda" text="Preço Venda" prefWidth="90"/>
+            <TableColumn fx:id="colEstoque" text="Estoque" prefWidth="70"/>
+            <TableColumn fx:id="colCategoria" text="Categoria" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>
